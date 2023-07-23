@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'settings',
     'unit',
     "taggit",
+    'django_summernote',
 ]
 
 MIDDLEWARE = [

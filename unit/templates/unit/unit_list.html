@@ -116,7 +116,7 @@
                         <div class="rooms-text">
                             <div class="line"></div>
                             <h4>{{unit.name}}</h4>
-                            <p>{{unit.description}}.</p>
+                            <p>{{unit.description|safe|truncatewords:2}}.</p>
                         </div>
                         <!-- Book Room -->
                         <a href="{{unit.get_absolute_url}}" class="book-room-btn btn palatin-btn">Book Room</a>
@@ -124,20 +124,22 @@
                 </div>
 
             {% endfor %}
-
+                
                 <div class="col-12">
                     <!-- Pagination -->
+                    {% if units.has_other_pages %}
                     <div class="pagination-area wow fadeInUp" data-wow-delay="400ms">
                         <nav>
-                            <ul class="pagination">
-                                <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                            </ul>
+                                <ul class="pagination">
+                                    {% for i in units.paginator.page_range %}
+                                    <li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}.</a></li>
+                                    {% endfor %}
+                                </ul>
                         </nav>
                     </div>
+                    {% endif %}
+                    
                 </div>
-
             </div>
         </div>
     </section>
