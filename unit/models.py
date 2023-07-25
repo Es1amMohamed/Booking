@@ -42,19 +42,16 @@ class Place(models.Model):
     def __str__(self):
         return self.name
     
-count = (
-    (1,1),
-    (2,2),
-    (3,3),
-    (4,4),
-)
+
 class UnitBook(models.Model):
     user = models.ForeignKey(User,related_name='book_owner',on_delete=models.CASCADE)
     unit = models.ForeignKey(Unit,related_name='book_unit',on_delete=models.CASCADE)
     date_from = models.DateField(default=timezone.now)
     date_to = models.DateField(default=timezone.now)
-    adults = models.IntegerField(choices=count)
-    children = models.IntegerField(choices=count)
+    adults = models.IntegerField()
+    children = models.IntegerField()
     
     def __str__(self):
         return str(self.unit)
+    
+    
