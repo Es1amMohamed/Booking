@@ -33,9 +33,6 @@ def unit_detail(request,slug):
         return redirect('/unit')
         
     else:
-         print("in else")
          unit = Unit.objects.get(slug=slug) 
-    
-    
-    
+   
     return render(request,'unit/unit_detail.html',context)

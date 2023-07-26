@@ -15,7 +15,8 @@ class Post(models.Model):
     category = models.ForeignKey('Category',related_name='post_category',on_delete=models.CASCADE)
     slug = models.SlugField(null= True, blank= True)
     
-    
+    def __str__(self):
+        return self.title
     
     def save(self, *args, **kwargs):
         if not self.slug:
