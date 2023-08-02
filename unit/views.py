@@ -2,6 +2,8 @@ from django.forms import SplitDateTimeField
 from django.shortcuts import redirect, render
 from .models import *
 from django.core.paginator import Paginator
+from .booking_func.availability import *
+from .forms import *
 
 
 # Create your views here.
@@ -9,30 +11,26 @@ from django.core.paginator import Paginator
 
 def unit_list(request):
     units = Unit.objects.all()  
-
     paginator = Paginator(units,1)
     page = request.GET.get('page')
     page_ogj = paginator.get_page(page)
-    context = {'units':page_ogj}
- 
-    
+    context = {'units':page_ogj}   
     return render(request,'unit/unit_list.html',context)
+
 
 def unit_detail(request,slug):
     unit = Unit.objects.get(slug=slug)
-    context = {"unit":unit}
+    
     if request.method == 'POST':
-        print("in post")
-        check_in = request.POST.get('check_in')
-        print(list(check_in))
-        check_out = request.POST.get('check_out')
-        adults = request.POST.get("adults")
-        children = request.POST.get("children")
-        data = UnitBook(user= request.user,unit=unit,date_from=check_in,date_to=check_out ,adults=adults,children=children)
-        data.save()
-        return redirect('/unit')
-        
+        form = UnitBookForm(request.POST)
+        if form.is_valid():
+            my_form = form.save(commit=False)
+            my_form.unit = unit
+            my_form.user = request.user
+            my_form.save()
+            return redirect('/unit')
     else:
-         unit = Unit.objects.get(slug=slug) 
-   
+         form = UnitBookForm() 
+         
+    context = {"unit":unit,'form':form}
     return render(request,'unit/unit_detail.html',context)

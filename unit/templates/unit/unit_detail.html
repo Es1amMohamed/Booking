@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% load static %}
 {% block body %}
+
 
 
 <body>
@@ -21,60 +23,12 @@
                         <form action="#" method='POST'>
                             {% csrf_token %}
                             <!-- Form Group -->
-                            <div class="form-group" >
-                                <label for="select1" >Check In</label>
-                                <select class="form-control" id="select1" name="check_in">
-                                  <option>2023-10-12</option>
-                                  <option>2023-10-13</option>
-                                  <option>2023-10-14</option>
-                                  <option>2023-10-15</option>
-                                  <option>2023-10-16</option>
-                                  <option>2023-10-17</option>
-                                  <option>2023-10-18</option>
-                                </select>
-                            </div>
-
-                            <!-- Form Group -->
-                            <div class="form-group" >
-                                <label for="select2">Check Out</label>
-                                <select class="form-contro2" id="select2" name="check_out">
-                                  <option>2023-10-19</option>
-                                  <option>2023-10-20</option>
-                                  <option>2023-10-21</option>
-                                  <option>2023-10-22</option>
-                                  <option>2023-10-23</option>
-                                  <option>2023-10-24</option>
-                                  <option>2023-10-25</option>
-                                  <option>2023-10-26</option>
-                                </select>
-                            </div>
-
-                            <!-- Form Group -->
-                            <div class="form-group" >
-                                <label for="select3">Adults</label>
-                                <select class="form-control" id="select3" name="adults">
-                                  <option>02</option>
-                                  <option>03</option>
-                                  <option>04</option>
-                                  <option>05</option>
-                                  <option>06</option>
-                                </select>
-                            </div>
-
-                            <!-- Form Group -->
-                            <div class="form-group" >
-                                <label for="select4">Childrens</label>
-                                <select class="form-control" id="select4" name="children">
-                                  <option>01</option>
-                                  <option>02</option>
-                                  <option>03</option>
-                                  <option>04</option>
-                                  <option>05</option>
-                                </select>
-                            </div>
+                            {% bootstrap_form form %}
 
                             <!-- Button -->
+                            
                             <button type="submit" >Book Now</button>
+                            
                         </form>
                     </div>
                 </div>
