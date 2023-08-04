@@ -24,6 +24,7 @@ class Post(models.Model):
        
         super(Post, self).save(*args, **kwargs)
     
+    
 class Category(models.Model):
     name = models.CharField(max_length=100)
     

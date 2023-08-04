@@ -18,9 +18,9 @@ def unit_list(request):
     return render(request,'unit/unit_list.html',context)
 
 
+
 def unit_detail(request,slug):
     unit = Unit.objects.get(slug=slug)
-    
     if request.method == 'POST':
         form = UnitBookForm(request.POST)
         if form.is_valid():

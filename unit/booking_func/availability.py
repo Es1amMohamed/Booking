@@ -1,12 +1,13 @@
 import datetime
-from unit.models import *
+from unit.models import UnitBook
 
-def check_availability(unit,date_to,date_from):
+
+def check_availability(unit,date_from,date_to):
     avail = []
-    book_list = UnitBook.objects.filter(unit=unit)
-    for book in book_list:
-        if book.date_from > date_to or book.date_to < date_from:
-            avail.append(True)
-        else:
-            avail.append(False)
+    unit_list = UnitBook.objects.get(unit=unit)
+    #for book in book_list:
+    if unit_list.date_from > date_to or unit_list.date_to < date_from:
+        avail.append(True)
+    else:
+        avail.append(False)
     return all(avail)
