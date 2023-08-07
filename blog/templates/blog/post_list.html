@@ -15,8 +15,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="palatin-blog-posts">
 
+                    <div class="palatin-blog-posts">
+                        
                         <!-- ##### Single Blog Post ##### -->
                     {% for post in posts %}
                         <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
@@ -27,16 +28,15 @@
                             <!-- Post Content -->
                             <div class="post-content">
                                 <!-- Post Date-->
-                                <a href="#" class="post-date btn palatin-btn">{{post.created_at|date}}</a>
+                                <a href="{{post.get_absolute_url}}" class="post-date btn palatin-btn">{{post.created_at|date}}</a>
                                 <!--<a href="#" class="post-date btn palatin-btn">June 25, 2018</a>-->
                                 <!-- Post Title -->
-                                <a href="#" class="post-title">{{post.title}}</a>
+                                <a href="{{post.get_absolute_url}}" class="post-title">{{post.title}}</a>
                                 <!-- Post Meta -->
-                                <div class="post-meta d-flex justify-content-center">
+                                <div class=" d-flex justify-content-center">
                                     <!-- Catagory -->
-                                    <a href="#" class="post-catagory">{{post.category}}</a>
-                                    <!-- Comments -->
-                                    <a href="#" class="post-comments">3 comments</a>
+                                    <a href="{{post.get_absolute_url}}" class="post-catagory">{{post.category}}</a>
+
                                 </div>
                                 <!-- Post Excerpt -->
                                 <p>{{post.residency_programme|safe|truncatewords:2}}</p>
@@ -46,10 +46,7 @@
                     </div>
                 </div>
 
-                <div class="col-12">
-                    <div class="load-more-btn text-center wow fadeInUp" data-wow-delay="700ms">
-                        <a href="#" class="btn palatin-btn">Load More</a>
-                    </div>
+
                 </div>
             </div>
         </div>

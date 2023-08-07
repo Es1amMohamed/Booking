@@ -51,39 +51,17 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li class="active"><a href="{%url 'unit:unit_list' %}">Home</a></li>
+                                    <li class="active"><a href="{%url 'settings:home' %}">Home</a></li>
                                     <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="services.html">Services</a></li>
-                                            <li><a href="rooms.html">Rooms</a></li>
-                                            <li><a href="blog.html">News</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Mega Menu</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="{%url 'unit:unit_list' %}">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="{%url 'unit:unit_list' %}">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="services.html">Services</a></li>
+                                    <li><a href="{%url 'unit:unit_list' %}">Rooms</a></li>
+                                    <li><a href="{%url 'blog:post_list' %}">Blogs</a></li>
+                                    <li><a href="{%url 'settings:services'%}">Services</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>
 
                                 <!-- Button -->
                                 <div class="menu-btn">
-                                    <a href="#" class="btn palatin-btn">Make a Reservation</a>
+                                    <a href="{%url 'unit:unit_list' %}" class="btn palatin-btn">Make a Reservation</a>
                                 </div>
 
                             </div>

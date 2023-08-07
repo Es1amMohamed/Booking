@@ -12,4 +12,5 @@ def post_list(request):
 
 
 def post_detail(request,slug):
-    pass
+    post = Post.objects.get(slug=slug)    
+    return render(request,'blog/post_detail.html',{'post':post})
