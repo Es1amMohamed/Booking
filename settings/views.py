@@ -20,3 +20,18 @@ def services(request):
     
     
     return render(request, 'settings/services.html')
+
+
+def about_us(request):
+    
+    units = Unit.objects.all()
+    context = {'units':units}
+
+    return render(request,'settings/about_us.html', context)
+
+
+
+def contact(request):
+    
+    
+    return render(request,'settings/contact.html')
