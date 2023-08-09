@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(Settings)
 admin.site.register(Image)
+admin.site.register(Services)

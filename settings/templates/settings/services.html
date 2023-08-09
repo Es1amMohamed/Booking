@@ -42,36 +42,17 @@
                 <!-- Services Features -->
                 <div class="col-12 col-lg-6">
                     <div class="row mb-100">
-
+                        {% for service in services %}
                         <!-- Single Cool Facts -->
                         <div class="col-12 col-sm-4">
                             <div class="single-cool-fact">
                                 <div class="scf-text">
-                                    <i class="icon-cocktail-1"></i>
-                                    <p>Pool Beachbar</p>
+                                    <i class="{{service.icon}}"></i>
+                                    <p>{{service.name}}</p>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Single Cool Facts -->
-                        <div class="col-12 col-sm-4">
-                            <div class="single-cool-fact">
-                                <div class="scf-text">
-                                    <i class="icon-swimming-pool"></i>
-                                    <p>Infinity Pool</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Cool Facts -->
-                        <div class="col-12 col-sm-4">
-                            <div class="single-cool-fact">
-                                <div class="scf-text">
-                                    <i class="icon-beach"></i>
-                                    <p>Sunbeds</p>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
 
                     </div>
                 </div>
@@ -86,43 +67,19 @@
             <div class="row justify-content-center">
 
                 <!-- Single Core Feature Area -->
+            {% for service in services_2 %}
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-core-feature mb-100">
-                        <div class="bg-thumbnail bg-img" style="background-image: url(img/bg-img/12.jpg);"></div>
+                        <div class="bg-thumbnail bg-img" style="background-image: url({{service.image.url}});"></div>
                         <!-- Content -->
                         <div class="feature-content">
-                            <i class="icon-sunset"></i>
-                            <h3>Wellness</h3>
-                            <p>Malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus. faucibus finibus.</p>
+                            <i class="{{service.icon}}"></i>
+                            <h3>{{service.name}}</h3>
+                            <p>{{service.description}}</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Single Core Feature Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-core-feature mb-100">
-                        <div class="bg-thumbnail bg-img" style="background-image: url(img/bg-img/13.jpg);"></div>
-                        <!-- Content -->
-                        <div class="feature-content">
-                            <i class="icon-sunset"></i>
-                            <h3>Spa Center</h3>
-                            <p>Malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus. faucibus finibus.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Core Feature Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-core-feature mb-100">
-                        <div class="bg-thumbnail bg-img" style="background-image: url(img/bg-img/14.jpg);"></div>
-                        <!-- Content -->
-                        <div class="feature-content">
-                            <i class="icon-island"></i>
-                            <h3>Lounge Bar</h3>
-                            <p>Malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus. faucibus finibus.</p>
-                        </div>
-                    </div>
-                </div>
+            {% endfor %}
 
             </div>
         </div>
@@ -133,60 +90,16 @@
     <section class="services-area">
         <div class="container">
             <div class="row">
-
+                {% for service in services_3 %}
                 <!-- Single Service Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-service-area mb-100 wow fadeInUp" data-wow-delay="100ms">
-                        <i class="icon-trekking"></i>
-                        <h4>Bike Rentals</h4>
-                        <p>Nulla massa dui, posuere non erat in, eleifend mattis dui. Vivamus luctus luctus rhoncus. Donec sagittis nulla id finibus iaculis. Mauris odio tortor.</p>
+                        <i class="{{service.icon}}"></i>
+                        <h4>{{service.name}}</h4>
+                        <p>{{service.description}}</p>
                     </div>
                 </div>
-
-                <!-- Single Service Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-service-area mb-100 wow fadeInUp" data-wow-delay="200ms">
-                        <i class="icon-boat"></i>
-                        <h4>Boat Trips</h4>
-                        <p>Nulla massa dui, posuere non erat in, eleifend mattis dui. Vivamus luctus luctus rhoncus. Donec sagittis nulla id finibus iaculis. Mauris odio tortor.</p>
-                    </div>
-                </div>
-
-                <!-- Single Service Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-service-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-                        <i class="icon-restaurant"></i>
-                        <h4>Restaurants</h4>
-                        <p>Nulla massa dui, posuere non erat in, eleifend mattis dui. Vivamus luctus luctus rhoncus. Donec sagittis nulla id finibus iaculis. Mauris odio tortor.</p>
-                    </div>
-                </div>
-
-                <!-- Single Service Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-service-area mb-100 wow fadeInUp" data-wow-delay="400ms">
-                        <i class="icon-beach"></i>
-                        <h4>Massages</h4>
-                        <p>Nulla massa dui, posuere non erat in, eleifend mattis dui. Vivamus luctus luctus rhoncus. Donec sagittis nulla id finibus iaculis. Mauris odio tortor.</p>
-                    </div>
-                </div>
-
-                <!-- Single Service Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-service-area mb-100 wow fadeInUp" data-wow-delay="500ms">
-                        <i class="icon-boarding-pass"></i>
-                        <h4>Event Tikets</h4>
-                        <p>Nulla massa dui, posuere non erat in, eleifend mattis dui. Vivamus luctus luctus rhoncus. Donec sagittis nulla id finibus iaculis. Mauris odio tortor.</p>
-                    </div>
-                </div>
-
-                <!-- Single Service Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-service-area mb-100 wow fadeInUp" data-wow-delay="600ms">
-                        <i class="icon-sign"></i>
-                        <h4>Hiking</h4>
-                        <p>Nulla massa dui, posuere non erat in, eleifend mattis dui. Vivamus luctus luctus rhoncus. Donec sagittis nulla id finibus iaculis. Mauris odio tortor.</p>
-                    </div>
-                </div>
+                {% endfor %}
 
             </div>
         </div>

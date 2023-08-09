@@ -1,25 +1,28 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from unit.models import *
+from .models import *
 
 # Create your views here.
 
 
 def home(request):
-    
+    settings = Settings.objects.last()
     units = Unit.objects.all()
     paginator = Paginator(units,1)
     page = request.GET.get('page')
     page_ogj = paginator.get_page(page)
-    context = {'units':page_ogj}
+    context = {'units':page_ogj , 'settings':settings}
     
     return render(request, 'settings/home.html' ,context)
 
 
 def services(request):
-    
-    
-    return render(request, 'settings/services.html')
+    services = Services.objects.all()[:3]
+    services_2 = Services.objects.all()[3:6]
+    services_3 = Services.objects.all()[6:]
+    context = {'services':services, 'services_2':services_2 , 'services_3': services_3 }
+    return render(request, 'settings/services.html', context)
 
 
 def about_us(request):
@@ -32,6 +35,6 @@ def about_us(request):
 
 
 def contact(request):
+    settings = Settings.objects.last()
     
-    
-    return render(request,'settings/contact.html')
+    return render(request,'settings/contact.html', {'settings':settings})
