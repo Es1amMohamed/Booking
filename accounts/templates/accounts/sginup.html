@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+{% load bootstrap4 %}
+
+{% block h2 %}  
+<h2>Sgin Up </h2>        
+{% endblock h2 %}
+
+
+{% block contant%}
+
+
+<div class="col-12 col-lg-6">
+  <form method="post" >
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit"  class="btn palatin-btn mt-50" value="sgin up">
+
+  </form>
+</div>
+
+
+{% endblock %}
