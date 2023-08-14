@@ -23,7 +23,6 @@ def unit_detail(request,slug):
     unit = Unit.objects.get(slug=slug)
     if request.method == 'POST':
         form = UnitBookForm(request.POST)
-        print(form)
         if form.is_valid():
             my_form = form.save(commit=False)
             my_form.unit = unit
