@@ -30,6 +30,9 @@ class Unit(models.Model):
     def get_absolute_url(self):
         return reverse("unit:unit_detail", kwargs={"slug": self.slug})
     
+    def not_available(self):
+        reservations = self.book_unit.all()
+    
     
 class Category(models.Model):
     name = models.CharField(max_length=100)

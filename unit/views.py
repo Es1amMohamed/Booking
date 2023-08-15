@@ -4,7 +4,7 @@ from .models import *
 from django.core.paginator import Paginator
 from .booking_func.availability import *
 from .forms import *
-
+from django.utils import timezone
 
 # Create your views here.
 
@@ -28,11 +28,29 @@ def unit_detail(request,slug):
             my_form.unit = unit
             my_form.user = request.user
             if check_availability(unit,my_form.date_from,my_form.date_to):
-                my_form.save()
-                return redirect('/unit')
+                now = timezone.now().date()
+                if now <= my_form.date_from and now <= my_form.date_to :
+                    my_form.save()
+                    date_to = my_form.date_to 
+                    date_from= my_form.date_from 
+                    unit = my_form.unit
+                    context = {
+                        'date_to':date_to,
+                        'date_from':date_from,
+                        'unit':unit,
+                    }
+                    return render(request,'unit/available.html',context)
+                else:
+                    not2 = 'Not valid date'
+                    return render(request,'unit/not_available.html',{'not4':not2} )
+            else:
+                not3 = 'gg'
+                return render(request,'unit/not_available.html',{'not1':not3} )
+
             
     else:
          form = UnitBookForm() 
          
     context = {"unit":unit,'form':form}
     return render(request,'unit/unit_detail.html',context)
+
