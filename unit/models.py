@@ -60,6 +60,7 @@ class UnitBook(models.Model):
     date_to = models.DateField(default=timezone.now)
     adults = models.IntegerField(choices=COUNT)
     children = models.IntegerField(choices=COUNT)
+    created_at = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return str(self.unit)

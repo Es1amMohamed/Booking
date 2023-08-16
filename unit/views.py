@@ -29,15 +29,19 @@ def unit_detail(request,slug):
             my_form.user = request.user
             if check_availability(unit,my_form.date_from,my_form.date_to):
                 now = timezone.now().date()
-                if now <= my_form.date_from and now <= my_form.date_to :
+                if now <= my_form.date_from and now <= my_form.date_to and my_form.date_to > my_form.date_from :
                     my_form.save()
                     date_to = my_form.date_to 
                     date_from= my_form.date_from 
                     unit = my_form.unit
+                    create =  timezone.now().date()
+                    
                     context = {
                         'date_to':date_to,
                         'date_from':date_from,
                         'unit':unit,
+                        'create':create
+                        
                     }
                     return render(request,'unit/available.html',context)
                 else:
