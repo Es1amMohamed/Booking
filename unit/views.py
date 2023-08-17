@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from .booking_func.availability import *
 from .forms import *
 from django.utils import timezone
+from django.db.models import Max
 
 # Create your views here.
 
@@ -21,6 +22,7 @@ def unit_list(request):
 
 def unit_detail(request,slug):
     unit = Unit.objects.get(slug=slug)
+    
     if request.method == 'POST':
         form = UnitBookForm(request.POST)
         if form.is_valid():
@@ -35,21 +37,19 @@ def unit_detail(request,slug):
                     date_from= my_form.date_from 
                     unit = my_form.unit
                     create =  timezone.now().date()
-                    
                     context = {
                         'date_to':date_to,
                         'date_from':date_from,
                         'unit':unit,
                         'create':create
-                        
                     }
                     return render(request,'unit/available.html',context)
                 else:
-                    not2 = 'Not valid date'
-                    return render(request,'unit/not_available.html',{'not4':not2} )
+                    not_valid1 = 'Not valid date, Please check the date you entered and try again '
+                    return render(request,'unit/not_available.html',{'not1':not_valid1} )
             else:
-                not3 = 'gg'
-                return render(request,'unit/not_available.html',{'not1':not3} )
+                not_valid2 = unit.book_unit.aggregate(book_ends_is=Max("date_to"))
+                return render(request,'unit/not_available.html',{'not2':not_valid2} )
 
             
     else:

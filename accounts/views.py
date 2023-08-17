@@ -16,7 +16,7 @@ def sign_up(request):
             use = form.cleaned_data['username']
             em = form.cleaned_data['email']
             user = User.objects.create(username=use, email=em )
-           # user.set_password(form.cleaned_data['password2'])
+            user.set_password(form.cleaned_data['password2'])
             user.save()
 
             if user is not None:
