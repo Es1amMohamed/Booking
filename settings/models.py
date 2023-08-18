@@ -16,15 +16,20 @@ class Settings(models.Model):
     address_2 = models.CharField(max_length = 300 ,default= 'Egypt')
     
     def __str__(self):
+        
         return self.site_name
  
  
  
 
 class Image(models.Model):
-   image = models.ImageField(upload_to='home_page/')
-   
-   
+    title = models.CharField(max_length=150)
+    description = models.TextField(max_length=250)
+    image = models.ImageField(upload_to='home_page/')
+    
+    
+    def __str__(self):
+        return self.title
 class Services(models.Model):
     name = models.CharField(max_length = 50)
     icon = models.CharField(max_length=200)

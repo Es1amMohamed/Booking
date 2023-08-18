@@ -9,18 +9,11 @@
             <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
         </div>
     </div>
-
-
-
-    <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/bg-6.jpg' %});">
         <div class="bradcumbContent">
             <h2> Reservation Failed &#128533; </h2>
         </div>
     </section>
-    <!-- ##### Breadcumb Area End ##### -->
-
-    <!-- ##### Book Now Area Start ##### -->
     <div class="book-now-area">
         <div class="container">
             <div class="row justify-content-center">
@@ -31,9 +24,6 @@
             </div>
         </div>
     </div>
-    <!-- ##### Book Now Area End ##### -->
-
-    <!-- ##### Rooms Area Start ##### -->
     <section class="rooms-area section-padding-0-100">
         <div class="container">
             <div class="row justify-content-center">
@@ -46,30 +36,17 @@
                              <h4>Sorry, but the room will be vacant until {{not2.book_ends_is}}, You can book another room</h4>
                              <a href="{%url 'unit:unit_list' %}" class="book-room-btn btn palatin-btn"> From here </a>
                     {% endif %}
-
-
                     </div>
                 </div>
             </div>
-
             <div class="row">
-
-                <!-- Single Rooms Area -->
-
                 <div class="col-12 col-md-6 col-lg-4">
-
                 </div>
                 
-
             </div>
         </div>
     </section>
-    <!-- ##### Rooms Area End ##### -->
-
-
 </body>
-
-
 {% endblock body %}
 
 

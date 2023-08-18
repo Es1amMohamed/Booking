@@ -9,10 +9,11 @@ from .models import *
 def home(request):
     settings = Settings.objects.last()
     units = Unit.objects.all()
+    image = Image.objects.all()[:3]
     paginator = Paginator(units,1)
     page = request.GET.get('page')
     page_ogj = paginator.get_page(page)
-    context = {'units':page_ogj , 'settings':settings}
+    context = {'units':page_ogj , 'settings':settings , 'image' : image}
     
     return render(request, 'settings/home.html' ,context)
 
