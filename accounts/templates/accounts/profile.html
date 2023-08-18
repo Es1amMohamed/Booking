@@ -7,7 +7,7 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img d-flex align-items-center justify-content-center" style="background-image: url({%static 'img/bg-img/bg-8.jpg'%});">
         <div class="bradcumbContent">
-            <h2>Contact</h2>
+            <h2>Profile</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -35,7 +35,7 @@
                     <div class="single-contact-information mb-100">
                         <div class="section-text">
                             <h3>{{settings.address}}</h3>
-                            <p>Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum.</p>
+                            <p>We hope your experience with us will be pleasant.</p>
                         </div>
                         <!-- Single Contact Information -->
 
@@ -61,20 +61,16 @@
                         <div class="line-"></div>
                         <h2>Wellcome {{profile.user.username}}</h2>
                     </div>
+                    <a href="{% url 'logout' %}" class="btn palatin-btn mt-50" >Logout </a>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12">
-                    <!-- Contact Form -->
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### Contact Form Area End ##### -->
-
-    <!-- ##### Google Maps ##### -->
-
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
@@ -84,7 +80,7 @@
                 <!-- Footer Widget Area -->
                 <div class="col-12 col-lg-5">
                     <div class="footer-widget-area mt-50">
-                        <a href="#" class="d-block mb-5"><img src="img/core-img/logo.png" alt=""></a>
+                        <a href="#" class="d-block mb-5"><img src="{{my_footer.logo.url}}" alt=""></a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. </p>
                     </div>
                 </div>

@@ -29,6 +29,7 @@
   </form>
 </div>
   {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+  <a href="{% url 'password_reset' %}" class="btn palatin-btn mt-50" >Lost password </a>
+  <a href="{% url 'accounts:signup' %}" class="btn palatin-btn mt-50" >Sgin Up </a>
 
 {% endblock %}

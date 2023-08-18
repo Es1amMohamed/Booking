@@ -10,6 +10,5 @@ urlpatterns = [
     path('signup', views.sign_up, name='signup'),
     path('profile/', views.profile, name='profile'),
     path('reservation', views.my_reservation, name='my_reservation'),
-    path('profile/edit', views.edit_profile, name='edit_profile'),
     
 ]

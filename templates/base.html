@@ -10,7 +10,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Booking</title>
+    <title>{{my_footer.site_name}}</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{my_footer.logo.url}}">
@@ -51,14 +51,23 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
+                                    
                                     <li class="active"><a href="{%url 'settings:home' %}">Home</a></li>
-                                    <li><a href="{%url 'settings:about_us'%}">About Us</a></li>
                                     <li><a href="{%url 'unit:unit_list' %}">Rooms</a></li>
-                                    <li><a href="{%url 'blog:post_list' %}">Blogs</a></li>
-                                    <li><a href="{%url 'settings:services'%}">Services</a></li>
-                                    <li><a href="{%url 'settings:contact'%}">Contact</a></li>
                                     <li><a href="{%url 'accounts:profile'%}">Profile</a></li>
                                     <li><a href="{%url 'accounts:my_reservation'%}">My Reservation</a></li>
+                                    <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{%url 'blog:post_list' %}">Blogs</a></li>
+                                            <li><a href="{%url 'settings:about_us'%}">About Us</a></li>
+                                            <li><a href="{%url 'settings:services'%}">Services</a></li>
+                                            <li><a href="{%url 'settings:contact'%}">Contact</a></li>
+                                        </ul>
+                                    </li>
+                                {% if request.user.is_authenticated %}       
+                                {% else %}
+                                    <li><a href="{%url 'login'%}">Login</a></li>               
+                                {% endif %}
                                 </ul>
 
                                 <!-- Button -->

@@ -5,6 +5,7 @@ from .forms import SignupForm
 from django.contrib.auth import  login
 from .models import *
 from unit.models import *
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -33,18 +34,15 @@ def sign_up(request):
 
     return render(request, 'accounts/sginup.html',{'form':form})
 
-
+@login_required
 def profile(request):
     
     profile = Profile.objects.get(user=request.user)
     return render(request, 'accounts/profile.html',{'profile':profile})
 
 
-def edit_profile(request):
-    pass
 
-
-
+@login_required
 def my_reservation(request):
     unit_list = UnitBook.objects.filter(user= request.user)
     return render(request,'accounts/reservation.html',{'unit_list':unit_list})

@@ -1,4 +1,4 @@
-from django.forms import SplitDateTimeField
+
 from django.shortcuts import redirect, render
 from .models import *
 from django.core.paginator import Paginator
@@ -6,6 +6,7 @@ from .booking_func.availability import *
 from .forms import *
 from django.utils import timezone
 from django.db.models import Max
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -19,10 +20,9 @@ def unit_list(request):
     return render(request,'unit/unit_list.html',context)
 
 
-
+@login_required
 def unit_detail(request,slug):
     unit = Unit.objects.get(slug=slug)
-    
     if request.method == 'POST':
         form = UnitBookForm(request.POST)
         if form.is_valid():
