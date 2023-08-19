@@ -31,7 +31,7 @@
         </div>
     </div>
     <!-- ##### Book Now Area End ##### -->
-
+    
     <!-- ##### Rooms Area Start ##### -->
     <section class="rooms-area section-padding-0-100">
         <div class="container">
@@ -39,15 +39,27 @@
                 <div class="col-12 col-lg-6">
                     <div class="section-heading text-center">
                         <div class="line-"></div>
-                        <h2>Choose a room</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien.</p>
+                       
                     </div>
+                 
                 </div>
             </div>
 
             <div class="row">
 
                 <!-- Single Rooms Area -->
+        
+
+        {% if make_reservation %}
+
+        <div class="section-heading text-center">
+            <div class="line-"></div>
+            <h2>{{make_reservation}}</h2>
+            <a href="{%url 'unit:unit_list'  %}" class="book-room-btn btn palatin-btn"> Book Now </a>
+        </div>
+     
+
+        {% else %}
             {% for unit in unit_list %}
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-rooms-area wow fadeInUp" data-wow-delay="100ms">
@@ -62,12 +74,12 @@
                             <p>{{unit.unit.description|safe|truncatewords:2}}.</p>
                         </div>
                         <!-- Book Room -->
-                        <a href="{{unit.unit.get_absolute_url}}" class="book-room-btn btn palatin-btn">Check reservation</a>
+                        <a href="{%url 'accounts:check_reservation' unit.id %}" class="book-room-btn btn palatin-btn">Check reservation</a>
                     </div>
                 </div>
 
             {% endfor %}
-                
+            {% endif %}
 
             </div>
         </div>

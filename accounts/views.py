@@ -23,14 +23,9 @@ def sign_up(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('/accounts/profile')
-
-        
+                    return redirect('/accounts/profile')   
     else:
         form = SignupForm()
-
-            
-
 
     return render(request, 'accounts/sginup.html',{'form':form})
 
@@ -45,4 +40,19 @@ def profile(request):
 @login_required
 def my_reservation(request):
     unit_list = UnitBook.objects.filter(user= request.user)
-    return render(request,'accounts/reservation.html',{'unit_list':unit_list})
+    if len(unit_list) > 0 :
+        return render(request,'accounts/reservations.html',{'unit_list':unit_list})
+    else:
+        make_reservation = "You don't have any reservation yet"
+        return render(request,'accounts/reservations.html',{'make_reservation':make_reservation})
+
+
+def check_reservation(request,id):
+    check_book = UnitBook.objects.get(id=id)
+    return render(request,'accounts/check_reservation.html',{'check_book':check_book})
+
+
+def cancel_reservation(request,id):
+    cancel_book = UnitBook.objects.get(id=id)
+    cancel_book.delete()
+    return redirect('/accounts/reservation') 
