@@ -40,18 +40,18 @@
                     <div class="section-heading text-center">
                         <div class="line-"></div>
                         <h2>Choose a room</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien.</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
-
+            
             <div class="row">
-
+                {% for unit in units %} 
                 <!-- Single Rooms Area -->
-            {% for unit in units %}
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-rooms-area wow fadeInUp" data-wow-delay="100ms">
                         <!-- Thumbnail -->
+                        
                         <div class="bg-thumbnail bg-img" style="background-image: url({{unit.image.url}});"></div>
                         <!-- Price -->
                         <p class="price-from">From ${{unit.price}}/night</p>
@@ -63,15 +63,17 @@
                         </div>
                         <!-- Book Room -->
                         <a href="{{unit.get_absolute_url}}" class="book-room-btn btn palatin-btn">Book Room</a>
+                        
                     </div>
                 </div>
 
-            {% endfor %}
-                
+                {% endfor %}
+            </div>  
+            
+            {% if units.has_other_pages %} 
                 <div class="col-12">
                     <!-- Pagination -->
-                    {% if units.has_other_pages %}
-                    <div class="pagination-area wow fadeInUp" data-wow-delay="400ms">
+                    <div class="pagination-area wow fadeInUp" data-wow-delay="100ms">
                         <nav>
                                 <ul class="pagination">
                                     {% for i in units.paginator.page_range %}
@@ -80,9 +82,8 @@
                                 </ul>
                         </nav>
                     </div>
-                    {% endif %}
-                    
                 </div>
+            {% endif %}    
             </div>
         </div>
     </section>

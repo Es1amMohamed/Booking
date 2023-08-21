@@ -28,6 +28,7 @@ urlpatterns = [
     path('blog/',include('blog.urls', namespace='blog')),
     path('',include('settings.urls',namespace='settings')),
     path('summernote/', include('django_summernote.urls')),
+    path('api-auth/', include('rest_framework.urls')),
 ]
 
 urlpatterns +=  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

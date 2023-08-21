@@ -9,7 +9,7 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/bg-7.jpg' %});">
         <div class="bradcumbContent">
-            <h2>News</h2>
+            <h2>{{post.title}}</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -46,7 +46,7 @@
                                 <!-- Post Date-->
                                 <a href="#" class="post-date btn palatin-btn">{{post.created_at.date}}</a>
                                 <!-- Post Title -->
-                                <a href="#" class="post-title">{{post.name}}</a>
+                                
                                 <!-- Post Meta -->
                                 <div class=" d-flex justify-content-center">
                                     <!-- Catagory -->

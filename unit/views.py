@@ -14,8 +14,8 @@ from django.contrib.auth.decorators import login_required
 def unit_list(request):
     units = Unit.objects.all()  
     paginator = Paginator(units,1)
-    page = request.GET.get('page')
-    page_ogj = paginator.get_page(page)
+    page_num = request.GET.get('page')
+    page_ogj = paginator.get_page(page_num)
     context = {'units':page_ogj}   
     return render(request,'unit/unit_list.html',context)
 
