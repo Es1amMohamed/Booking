@@ -10,7 +10,7 @@ from django.db.models import Q
 @api_view(['GET'])
 def post_list_api(request):
     all_posts = Post.objects.all()
-    data = PostSerializer(all_posts, many=True).data
+    data = PostSerializer(all_posts, many=True,context={'request':request}).data
     
     return Response({'data':data})
 
@@ -18,8 +18,8 @@ def post_list_api(request):
 
 @api_view(['GET'])
 def post_detail_api(request, id):
-    post_detail = get_object_or_404(Post , id=id)
-    data = PostSerializer(post_detail).data
+    post_detail = get_object_or_404(Post , id=id )
+    data = PostSerializer(post_detail,context={'request':request}).data
 
     return Response({'data':data})
 

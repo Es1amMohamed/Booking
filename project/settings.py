@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'bootstrap4',
     'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
+
 
 
 # Database
@@ -127,7 +129,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend',]
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'rest_framework_simplejwt.authentication.JWTAuthentication',]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
