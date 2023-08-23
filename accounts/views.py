@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-def sign_up(request):
+def sign_up(request,backend='django.contrib.auth.backends.ModelBackend'):
     if request.method == 'POST':
         form = SignupForm(data=request.POST)  
         if form.is_valid():
@@ -22,18 +22,19 @@ def sign_up(request):
 
             if user is not None:
                 if user.is_active:
-                    login(request, user)
+                    login(request, user ,  backend='django.contrib.auth.backends.ModelBackend')
                     return redirect('/accounts/profile')   
     else:
         form = SignupForm()
 
-    return render(request, 'accounts/sginup.html',{'form':form})
+    return render(request, 'accounts/sign_up.html',{'form':form})
 
 @login_required
 def profile(request):
     
     profile = Profile.objects.get(user=request.user)
     return render(request, 'accounts/profile.html',{'profile':profile})
+
 
 
 
@@ -45,6 +46,7 @@ def my_reservation(request):
     else:
         make_reservation = "You don't have any reservation yet"
         return render(request,'accounts/reservations.html',{'make_reservation':make_reservation})
+
 
 
 def check_reservation(request,id):

@@ -16,6 +16,9 @@ class Unit(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(null= True, blank= True)
     
+    class Meta:
+        ordering = ['name']
+    
     
     
     def save(self, *args, **kwargs):

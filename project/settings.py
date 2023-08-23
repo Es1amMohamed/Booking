@@ -129,7 +129,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'rest_framework_simplejwt.authentication.JWTAuthentication',]
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend','rest_framework_simplejwt.authentication.JWTAuthentication',]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
