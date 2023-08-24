@@ -10,32 +10,30 @@ def home(request):
     settings = Settings.objects.last()
     units = Unit.objects.all()
     image = Image.objects.all()[:3]
-    paginator = Paginator(units,1)
-    page = request.GET.get('page')
+    paginator = Paginator(units, 1)
+    page = request.GET.get("page")
     page_ogj = paginator.get_page(page)
-    context = {'units':page_ogj , 'settings':settings , 'image' : image}
-    
-    return render(request, 'settings/home.html' ,context)
+    context = {"units": page_ogj, "settings": settings, "image": image}
+
+    return render(request, "settings/home.html", context)
 
 
 def services(request):
     services = Services.objects.all()[:3]
     services_2 = Services.objects.all()[3:6]
     services_3 = Services.objects.all()[6:]
-    context = {'services':services, 'services_2':services_2 , 'services_3': services_3 }
-    return render(request, 'settings/services.html', context)
+    context = {"services": services, "services_2": services_2, "services_3": services_3}
+    return render(request, "settings/services.html", context)
 
 
 def about_us(request):
-    
     units = Unit.objects.all()
-    context = {'units':units}
+    context = {"units": units}
 
-    return render(request,'settings/about_us.html', context)
-
+    return render(request, "settings/about_us.html", context)
 
 
 def contact(request):
     settings = Settings.objects.last()
-    
-    return render(request,'settings/contact.html', {'settings':settings})
+
+    return render(request, "settings/contact.html", {"settings": settings})

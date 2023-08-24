@@ -5,15 +5,20 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('settings', '0004_services_image'),
+        ("settings", "0004_services_image"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='settings',
-            name='image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='home_page_image', to='settings.image'),
+            model_name="settings",
+            name="image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="home_page_image",
+                to="settings.image",
+            ),
         ),
     ]

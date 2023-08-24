@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('settings', '0005_alter_settings_image'),
+        ("settings", "0005_alter_settings_image"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='settings',
-            name='address',
-            field=models.CharField(default='Egypt', max_length=500),
+            model_name="settings",
+            name="address",
+            field=models.CharField(default="Egypt", max_length=500),
         ),
         migrations.AlterField(
-            model_name='settings',
-            name='description',
+            model_name="settings",
+            name="description",
             field=models.TextField(max_length=200),
         ),
     ]

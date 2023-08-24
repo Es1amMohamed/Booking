@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('settings', '0007_settings_address_2'),
+        ("settings", "0007_settings_address_2"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='image',
-            name='description',
-            field=models.TextField(default='gg', max_length=250),
+            model_name="image",
+            name="description",
+            field=models.TextField(default="gg", max_length=250),
         ),
         migrations.AddField(
-            model_name='image',
-            name='title',
-            field=models.CharField(default='gg', max_length=150),
+            model_name="image",
+            name="title",
+            field=models.CharField(default="gg", max_length=150),
         ),
     ]

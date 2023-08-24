@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('accounts', '0008_alter_profile_phone_number'),
+        ("accounts", "0008_alter_profile_phone_number"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='profile',
-            name='email',
+            model_name="profile",
+            name="email",
             field=models.EmailField(default=1, max_length=254, unique=True),
         ),
     ]

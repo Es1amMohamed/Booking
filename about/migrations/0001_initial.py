@@ -4,20 +4,26 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='About',
+            name="About",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image_1', models.ImageField(upload_to='', verbose_name='about/')),
-                ('image_2', models.ImageField(upload_to='', verbose_name='about/')),
-                ('comments', models.TextField(max_length=500)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("image_1", models.ImageField(upload_to="", verbose_name="about/")),
+                ("image_2", models.ImageField(upload_to="", verbose_name="about/")),
+                ("comments", models.TextField(max_length=500)),
             ],
         ),
     ]

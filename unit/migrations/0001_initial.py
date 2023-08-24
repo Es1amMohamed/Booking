@@ -7,7 +7,6 @@ import django.utils.timezone
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -16,43 +15,109 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Place',
+            name="Place",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Unit',
+            name="Unit",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('image', models.ImageField(upload_to='unit/')),
-                ('price', models.IntegerField(default=0)),
-                ('description', models.TextField(max_length=10000)),
-                ('available', models.BooleanField(default=True)),
-                ('created_at', models.DateTimeField(default=django.utils.timezone.now)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='unit_category', to='unit.category')),
-                ('place', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='unit_place', to='unit.place')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("image", models.ImageField(upload_to="unit/")),
+                ("price", models.IntegerField(default=0)),
+                ("description", models.TextField(max_length=10000)),
+                ("available", models.BooleanField(default=True)),
+                ("created_at", models.DateTimeField(default=django.utils.timezone.now)),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="unit_category",
+                        to="unit.category",
+                    ),
+                ),
+                (
+                    "place",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="unit_place",
+                        to="unit.place",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='UnitBook',
+            name="UnitBook",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_from', models.DateField(default=django.utils.timezone.now)),
-                ('date_to', models.DateField(default=django.utils.timezone.now)),
-                ('adults', models.IntegerField(choices=[(1, 1), (2, 2), (3, 3), (4, 4)])),
-                ('children', models.IntegerField(choices=[(1, 1), (2, 2), (3, 3), (4, 4)])),
-                ('unit', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='book_unit', to='unit.unit')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='book_owner', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date_from", models.DateField(default=django.utils.timezone.now)),
+                ("date_to", models.DateField(default=django.utils.timezone.now)),
+                (
+                    "adults",
+                    models.IntegerField(choices=[(1, 1), (2, 2), (3, 3), (4, 4)]),
+                ),
+                (
+                    "children",
+                    models.IntegerField(choices=[(1, 1), (2, 2), (3, 3), (4, 4)]),
+                ),
+                (
+                    "unit",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="book_unit",
+                        to="unit.unit",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="book_owner",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
