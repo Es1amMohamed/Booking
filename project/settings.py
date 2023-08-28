@@ -50,7 +50,17 @@ INSTALLED_APPS = [
     "bootstrap4",
     "rest_framework",
     "rest_framework_simplejwt",
+    "rest_framework.authtoken",
+    "knox",
 ]
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+}
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

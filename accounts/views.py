@@ -6,8 +6,6 @@ from .models import *
 from unit.models import *
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-
 
 def sign_up(request, backend="django.contrib.auth.backends.ModelBackend"):
     if request.method == "POST":
@@ -26,6 +24,7 @@ def sign_up(request, backend="django.contrib.auth.backends.ModelBackend"):
                         user,
                         backend="django.contrib.auth.backends.ModelBackend",
                     )
+
                     return redirect("/accounts/profile")
     else:
         form = SignupForm()
