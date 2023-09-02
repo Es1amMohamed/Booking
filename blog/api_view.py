@@ -13,7 +13,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 
 
 @api_view(["GET"])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def post_list_api(request):
     all_posts = Post.objects.all()
     data = PostSerializer(all_posts, many=True, context={"request": request}).data

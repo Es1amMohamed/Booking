@@ -26,11 +26,3 @@ def create_user_profile(sender, instance, created, **kwargs):
         Token.objects.create(user=instance)
 
 
-# @receiver(post_save, sender=User)
-# def get_tokens_for_user(sender, **kwargs):
-#     refresh = RefreshToken.for_user(User)
-
-#     return {
-#         "refresh": str(refresh),
-#         "access": str(refresh.access_token),
-#     }

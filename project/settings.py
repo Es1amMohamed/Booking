@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     ## my apps
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
     "project",
     "about",
     "blog",
@@ -51,9 +54,12 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "rest_framework.authtoken",
+    'dj_rest_auth',
+    #'dj_rest_auth_registration',
     "knox",
 ]
 
+SITE_ID = 1
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [

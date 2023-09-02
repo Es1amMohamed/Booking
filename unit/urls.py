@@ -11,6 +11,7 @@ urlpatterns = [
     # api
     path("api/", UnitAPIList.as_view(), name="unit_api_list"),
     path("api/<int:pk>", UnitAPIdetail.as_view(), name="unit_api_detail"),
+    path('api/create_reservation/',CreateReservationAPI.as_view() , name='create_reservation_api'),
     path(
         "api/reservation/<int:id>", reservation_detail_api, name="unit_api_reservation"
     ),
