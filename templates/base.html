@@ -62,9 +62,10 @@
                                             <li><a href="{%url 'settings:about_us'%}">About Us</a></li>
                                             <li><a href="{%url 'settings:services'%}">Services</a></li>
                                             <li><a href="{%url 'settings:contact'%}">Contact</a></li>
+                                            <li><a href="https://documenter.getpostman.com/view/29351287/2s9Y5cuLum">API Documantation</a></li> 
                                         </ul>
                                     </li>
-                                {% if request.user.is_authenticated %}       
+                                {% if request.user.is_authenticated %}      
                                 {% else %}
                                     <li><a href="{%url 'login'%}">Login</a></li>               
                                 {% endif %}

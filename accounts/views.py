@@ -1,9 +1,11 @@
 from django.shortcuts import redirect, render
 from django.template import RequestContext
-from .forms import SignupForm
+from django.urls import reverse_lazy
+from .forms import SignupForm , PasswordChangingForm
 from django.contrib.auth import login
 from .models import *
 from unit.models import *
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.decorators import login_required
 
 
@@ -63,3 +65,21 @@ def cancel_reservation(request, id):
     cancel_book = UnitBook.objects.get(id=id)
     cancel_book.delete()
     return redirect("/accounts/reservation")
+
+# class PasswordChangeView(PasswordChangeView):
+#     form_class = PasswordChangingForm
+#     success_url = reverse_lazy()
+
+def change_password(request):
+    
+    if request.method == 'post':
+        form = PasswordChangingForm(user=request.user)
+        if form.is_valid():
+            user = request.user
+            user.set_password(form.cleaned_data["new_password2"])
+            user.save()
+    else:
+        form = PasswordChangingForm(user=request.user)
+    
+    return render(request,'registration/password_change_form.html', {'form':form})
+    

@@ -3,6 +3,7 @@ from .models import *
 from .booking_func.availability import *
 from django.db.models import Max
 
+
 class UnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Unit
@@ -12,4 +13,4 @@ class UnitSerializer(serializers.ModelSerializer):
 class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = UnitBook
-        fields = ["unit",'date_from','date_to','adults','children']
+        fields = ["unit", "date_from", "date_to", "adults", "children"]
