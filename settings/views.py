@@ -36,24 +36,3 @@ def about_us(request):
     context = {"units": units}
 
     return render(request, "settings/about_us.html", context)
-
-
-@login_required
-def contact(request):
-    settings = Settings.objects.last()
-    if request.method == "POST":
-        name = request.POST["text"]
-        email = request.POST["email"]
-        subject = request.POST["subject"]
-        message = request.POST["message"]
-
-        send_mail(
-            subject,
-            message,
-            email,
-            [project.settings.EMAIL_HOST_USER],
-        )
-
-        return redirect("/")
-
-    return render(request, "settings/contact.html", {"settings": settings})

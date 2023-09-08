@@ -64,7 +64,7 @@ COUNT = (
 
 
 class UnitBook(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True)
+    id = models.AutoField(primary_key=True, unique=True)
     user = models.ForeignKey(User, related_name="book_owner", on_delete=models.CASCADE)
     unit = models.ForeignKey(Unit, related_name="book_unit", on_delete=models.CASCADE)
     date_from = models.DateField(default=timezone.now)

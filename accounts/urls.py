@@ -11,7 +11,7 @@ urlpatterns = [
     path("reservation", views.my_reservation, name="my_reservation"),
     path("check/<int:id>", views.check_reservation, name="check_reservation"),
     path("cancel/<int:id>", views.cancel_reservation, name="cancel_reservation"),
-    path('password/change', views.change_password, name='change_password'),
+    path("password/change", views.change_password, name="change_password"),
     # api
     # path("api/profile", api_profile, name="api_profile"),
     path("api/profile", api_profile, name="api_profile"),
