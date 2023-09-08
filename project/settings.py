@@ -28,10 +28,13 @@ environ.Env.read_env()
 SECRET_KEY = "django-insecure-d942a&kc^9zm0j$w%mnzn!1-=o8dn)ie_s3^jh-_o=&ja9+!j6"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['*']
 
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -61,6 +64,7 @@ INSTALLED_APPS = [
     "dj_rest_auth",
     #'dj_rest_auth_registration',
     "knox",
+    "corsheaders",
 ]
 
 SITE_ID = 1
@@ -76,6 +80,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -104,6 +109,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "project.wsgi.application"
 
+CORS_ALLOWED_ORIGINS = True
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
