@@ -30,7 +30,7 @@ SECRET_KEY = "django-insecure-d942a&kc^9zm0j$w%mnzn!1-=o8dn)ie_s3^jh-_o=&ja9+!j6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
@@ -165,12 +165,13 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [
+#STATIC_ROOT = BASE_DIR / 'staticfiles'
+if not DEBUG:
+    STATIC_ROOT = [
     os.path.join(BASE_DIR,'static')
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = BASE_DIR / "static"
 MEDIA_URL = "media/"
