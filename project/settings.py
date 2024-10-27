@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,13 +27,13 @@ environ.Env.read_env()
 SECRET_KEY = "django-insecure-d942a&kc^9zm0j$w%mnzn!1-=o8dn)ie_s3^jh-_o=&ja9+!j6"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+# RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+# if RENDER_EXTERNAL_HOSTNAME:
+#     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     ## my apps
+    'amadeus',
     "django.contrib.sites",
     "allauth",
     "allauth.account",
@@ -58,11 +58,11 @@ INSTALLED_APPS = [
     "taggit",
     "django_summernote",
     "bootstrap4",
-    "rest_framework",
+    "rest_framework", 
     "rest_framework_simplejwt",
     "rest_framework.authtoken",
-    "dj_rest_auth",
-    #'dj_rest_auth_registration',
+    # "dj_rest_auth",
+    # 'dj_rest_auth_registration',
     "knox",
     "corsheaders",
 ]
@@ -75,18 +75,23 @@ REST_FRAMEWORK = {
     ]
 }
 
-
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+   
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware', 
 ]
+
+
+
+AMADEUS_CLIENT_ID = 'c3comMtgNouvZHfoH3m5GoODBuu7M2AJ'
+AMADEUS_CLIENT_SECRET = 'eKn1yN2AMWrnlU3d'
+
 
 ROOT_URLCONF = "project.urls"
 
@@ -109,19 +114,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "project.wsgi.application"
 
-CORS_ALLOWED_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = True
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
 
-DATABASES = {"default": dj_database_url.parse(env("DATABASE_URL"))}
+# DATABASES = {"default": dj_database_url.parse(env("DATABASE_URL"))}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -165,13 +170,16 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-#STATIC_ROOT = BASE_DIR / 'staticfiles'
-if not DEBUG:
-    STATIC_ROOT = [
-    os.path.join(BASE_DIR,'static')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR / "static", 
 ]
+# if not DEBUG:
+#     STATIC_ROOT = [
+#     os.path.join(BASE_DIR,'static')
+# ]
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = BASE_DIR / "static"
 MEDIA_URL = "media/"

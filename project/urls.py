@@ -27,6 +27,7 @@ urlpatterns = [
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("accounts/", include("django.contrib.auth.urls")),
     path("admin/", admin.site.urls),
+    path('amadeus/', include('amadeus.urls', namespace="amadeus")),
     path("unit/", include("unit.urls", namespace="unit")),
     path("blog/", include("blog.urls", namespace="blog")),
     path("", include("settings.urls", namespace="settings")),
