@@ -1,0 +1,16 @@
+{% extends 'base_amadeus.html' %}
+
+{% block body %}
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center;">
+    <div style="max-width: 600px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+        {% if hotel %}
+            <p>Hotel Name: {{ hotel.name }}</p>
+            <p>Address: {{ hotel.address.countryCode }}</p>
+            <p>Location: Latitude: {{ hotel.geoCode.latitude }}, Longitude: {{ hotel.geoCode.longitude }}</p>
+            <p>ID: {{ hotel.hotelId }}</p>
+        {% else %}
+            <p>No hotel information available.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock body %}

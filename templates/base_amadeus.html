@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>{{my_footer.site_name}}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{my_footer.logo.url}}">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Navbar Area -->
+        <div class="palatin-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="palatinNav">
+
+                        <!-- Nav brand -->
+                        <a href="{%url 'settings:home' %}" class="nav-brand"><img src="{{my_footer.logo.url}}" alt="My image"><p>Booking</p></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    
+                                    <li class="active"><a href="{%url 'settings:home' %}">Home</a></li>
+                                    <li><a href="{%url 'unit:unit_list' %}">Rooms</a></li>
+                                    <li><a href="{%url 'accounts:profile'%}">Profile</a></li>
+                                    <li><a href="{%url 'accounts:my_reservation'%}">My Reservation</a></li>
+                                    <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{%url 'blog:post_list' %}">Blogs</a></li>
+                                            <li><a href="{%url 'settings:about_us'%}">About Us</a></li>
+                                            <li><a href="{%url 'settings:services'%}">Services</a></li>
+                                            <li><a href="{%url 'amadeus:all_hotels'%}">Hotels</a></li>
+                                            <li><a href="https://documenter.getpostman.com/view/29351287/2s9Y5cuLum">API Documantation</a></li> 
+                                        </ul>
+                                    </li>
+                                {% if request.user.is_authenticated %}      
+                                {% else %}
+                                    <li><a href="{%url 'login'%}">Login</a></li>               
+                                {% endif %}
+                                </ul>
+
+                                <!-- Button -->
+                                <div class="menu-btn">
+                                    <a href="{%url 'unit:unit_list' %}" class="btn palatin-btn">Make a Reservation</a>
+                                </div>
+                                
+                                
+                                
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    {% block body %}
+    {% endblock body %}
+
+    <!-- ##### Footer Area Start ##### -->
+   
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- All Plugins js -->
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+</body>
+
+</html>
