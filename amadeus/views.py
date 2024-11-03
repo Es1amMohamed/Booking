@@ -4,7 +4,7 @@ from .amadues_api import *
 
 def all_hotels_view(request):
     
-    city_code = request.GET.get('city_code', 'LON')
+    city_code = request.GET.get('city_code', 'CAI')
     search_query = request.GET.get('query', '')
     hotels = get_all_hotels(city_code, search_query) 
     page_number = request.GET.get('page', 1) 
@@ -15,18 +15,19 @@ def all_hotels_view(request):
                 {
                 'hotels': page_obj,
                 'query': search_query,
+                'city_code': city_code,
                 })
-
 
 
 def hotel_detail_view(request, hotelId):
   
-    city_code = request.GET.get('city_code', 'LON')  
+    city_code = request.GET.get('city_code')  
     hotels = get_all_hotels(city_code)
 
     hotel = next((hotel for hotel in hotels if hotel["hotelId"] == hotelId), None)
 
     if hotel:
-        return render(request, 'hotels/hotel_detail.html', {'hotel': hotel})
+        return render(request, 'hotels/hotel_detail.html', {'hotel': hotel, 'city_code': city_code})
     else:
         return render(request, 'hotels/hotel_detail.html', {'error': 'Hotel not found.'})
+

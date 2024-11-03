@@ -2,6 +2,7 @@ import requests
 from django.conf import settings
 
 
+
 def get_access_token():
     url = "https://test.api.amadeus.com/v1/security/oauth2/token"
     data = {
@@ -17,8 +18,6 @@ def get_access_token():
     else:
         raise Exception("Could not retrieve access token: " + response.text)
     
-
-
 
 
 def get_all_hotels(city_code, query=None):
