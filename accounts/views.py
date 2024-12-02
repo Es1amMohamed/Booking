@@ -1,11 +1,9 @@
 from django.shortcuts import redirect, render
-from django.template import RequestContext
-from django.urls import reverse_lazy
+from django.contrib.auth import logout
 from .forms import SignupForm, PasswordChangingForm
 from django.contrib.auth import login
 from .models import *
 from unit.models import *
-from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.decorators import login_required
 
 
@@ -78,3 +76,8 @@ def change_password(request):
         form = PasswordChangingForm(user=request.user)
 
     return render(request, "registration/password_change_form.html", {"form": form})
+
+
+def log_out(request):
+    logout(request)
+    return redirect("/")

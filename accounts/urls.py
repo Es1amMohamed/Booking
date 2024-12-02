@@ -5,8 +5,9 @@ from .api_views import api_profile
 
 app_name = "accounts"
 
-urlpatterns = [
+urlpatterns = [ 
     path("signup", views.sign_up, name="signup"),
+    path('logout/', views.log_out, name="logout"),
     path("profile/", views.profile, name="profile"),
     path("reservation", views.my_reservation, name="my_reservation"),
     path("check/<int:id>", views.check_reservation, name="check_reservation"),
