@@ -13,7 +13,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def post_list_api(request):
     all_posts = Post.objects.all()
     data = PostSerializer(all_posts, many=True, context={"request": request}).data
@@ -22,7 +22,7 @@ def post_list_api(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def post_detail_api(request, id):
     post_detail = get_object_or_404(Post, id=id)
     data = PostSerializer(post_detail, context={"request": request}).data
@@ -31,7 +31,7 @@ def post_detail_api(request, id):
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def post_search_api(request, query):
     posts = Post.objects.filter(
         Q(title__icontains=query) | Q(residency_programme__icontains=query)

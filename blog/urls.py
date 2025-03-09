@@ -11,6 +11,8 @@ urlpatterns = [
     path("<slug:slug>", views.post_detail, name="post_detail"),
     # api
     path("api/list", post_list_api, name="post_list_api"),
-    path("api/<int:id>", post_detail_api, name="post_detail_api"),
+    path("api/<int:id>", post_detail_api, name="post_detail_api"), 
     path("api/filter/<str:query>", post_search_api, name="post_search_api"),
+
+    path("api/list/api", post_list_apis, name="post_list_api"),
 ]

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+    <section class="breadcumb-area bg-img d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/bg-7.jpg' %});">
+        <div class="bradcumbContent">
+            <h2>Blogs</h2>
+        </div>
+    </section>
+
+    <div class="blog-area section-padding-0-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="palatin-blog-posts" id="blog-container">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("http://127.0.0.1:8000/blog/api/list") 
+                .then(response => response.json())
+                .then(data => {
+                    let blogContainer = document.getElementById("blog-container");
+                    blogContainer.innerHTML = ""; 
+
+                    data.data.forEach(post => {
+                        let postHtml = `
+                            <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
+                                <div class="blog-post-thumb">
+                                    <img src="${post.image}" alt="${post.title}">
+                                </div>
+                                <div class="post-content">
+                                    <a href="${post.get_absolute_url}" class="post-date btn palatin-btn">${post.created_at}</a>
+                                    <a href="${post.get_absolute_url}" class="post-title">${post.title}</a>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="${post.get_absolute_url}" class="post-catagory">${post.category}</a>
+                                    </div>
+                                    <p>${post.residency_programme}</p>
+                                </div>
+                            </div>
+                        `;
+                        blogContainer.innerHTML += postHtml;
+                    });
+                })
+                .catch(error => console.error("Error fetching posts:", error));
+        });
+    </script>
+
+{% endblock body %}
